@@ -36,6 +36,7 @@ if __name__ == "__main__":
 		# Get the depth image from the capture
 		depth_image_handle = pyK4A.capture_get_depth_image()
 
+
 		# Check the image has been read correctly
 		if depth_image_handle:
 
@@ -44,7 +45,8 @@ if __name__ == "__main__":
 			depth_color_image = cv2.convertScaleAbs (depth_image, alpha=0.05)  #alpha is fitted by visual comparison with Azure k4aviewer results  
 			depth_color_image = cv2.applyColorMap(depth_color_image, cv2.COLORMAP_JET)
 			cv2.namedWindow('Colorized Depth Image',cv2.WINDOW_NORMAL)
-			cv2.imshow('Colorized Depth Image',depth_color_image)
+			cv2.VideoWriter(cv2.imshow('Colorized Depth Image',depth_color_image))
+
 			k = cv2.waitKey(1)
 
 			# Release the image
